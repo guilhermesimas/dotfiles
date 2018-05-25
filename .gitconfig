@@ -1,3 +1,12 @@
 [user]
 	email = guilherme_abinader@hotmail.com
 	name = Guilherme Simas
+[merge]
+	tool = vimdiff
+[push]
+	default = simple
+[log]
+	decorate = auto
+[alias]
+	lg = log --graph
+	log = log --graph
