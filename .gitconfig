@@ -10,3 +10,5 @@
 [alias]
 	lg = log --graph
 	log = log --graph
+[credential]
+	helper = cache
