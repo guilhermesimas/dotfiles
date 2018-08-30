@@ -122,3 +122,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/tensorflow
+source $HOME/.local/bin/virtualenvwrapper.sh 
