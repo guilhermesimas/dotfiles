@@ -126,3 +126,6 @@ fi
 # virtualenvwrapper
 export WORKON_HOME=$HOME/tensorflow
 source $HOME/.local/bin/virtualenvwrapper.sh 
+
+#anaconda install
+export PATH=$PATH:$HOME/anaconda3/bin
