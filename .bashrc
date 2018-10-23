@@ -126,3 +126,7 @@ fi
 # virtualenvwrapper
 export WORKON_HOME=$HOME/tensorflow
 source $HOME/.local/bin/virtualenvwrapper.sh 
+
+#LaTeX
+export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
+
