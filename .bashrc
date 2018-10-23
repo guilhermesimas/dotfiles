@@ -129,3 +129,11 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 
 #anaconda install
 export PATH=$PATH:$HOME/anaconda3/bin
+
+export NUMBAPRO_NVVM=/usr/local/cuda-9.0/nvvm/lib64/libnvvm.so
+export NUMBAPRO_LIBDEVICE=/usr/local/cuda-9.0/nvvm/libdevice/
+
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/include
+
