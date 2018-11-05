@@ -122,11 +122,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-
-# virtualenvwrapper
-export WORKON_HOME=$HOME/tensorflow
-source $HOME/.local/bin/virtualenvwrapper.sh 
-
 # LaTeX
 export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
 
@@ -134,4 +129,9 @@ export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/include
+
+# PyEnv
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
 
