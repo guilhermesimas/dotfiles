@@ -127,6 +127,11 @@ fi
 export WORKON_HOME=$HOME/tensorflow
 source $HOME/.local/bin/virtualenvwrapper.sh 
 
-#LaTeX
+# LaTeX
 export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
+
+# Cuda path
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/include
 
