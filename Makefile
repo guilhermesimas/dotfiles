@@ -19,5 +19,8 @@ htop:
 
 all-apt: vim git build-essential htop
 
+vundle:
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	vim +PluginInstall +qall
 
 .PHONY: vim git build-essentials all-apt
