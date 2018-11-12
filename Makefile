@@ -14,6 +14,10 @@ git:
 build-essential:
 	sudo apt install build-essential
 
-all-apt: vim git build-essential
+htop:
+	sudo apt install htop
+
+all-apt: vim git build-essential htop
+
 
 .PHONY: vim git build-essentials all-apt
