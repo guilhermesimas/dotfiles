@@ -1,10 +1,6 @@
-# TODO: Make an install script so that on new machines all the installations are done automatically
-# This would ideally include a rule to install packages suck as vim-gnome, build-essentials; A rule
-# to install vim packages such as vundle, a rule to install texlive, etc. the objective would be to
-# be ready to go in a new machine in an instant
-
 # TODO: symbolic link to all the files here
 
+# TODO: rule to install a list of packages
 vim:
 	sudo apt install vim-gnome
 
@@ -19,6 +15,7 @@ htop:
 
 all-apt: vim git build-essential htop
 
+# TODO: Test install of vundle before .vimrc
 vundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
