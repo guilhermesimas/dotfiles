@@ -5,6 +5,26 @@ gitconfig:
 	ln -s $$(pwd)/.gitconfig $(HOME)/.gitconfig 
 	cd -
 
+bashrc:
+	cd ..
+	ln -s $$(pwd)/.bashrc $(HOME)/.bashrc 
+	cd -
+
+bash_aliases:
+	cd ..
+	ln -s $$(pwd)/.bash_aliases $(HOME)/.bash_aliases 
+	cd -
+
+profile:
+	cd ..
+	ln -s $$(pwd)/.profile $(HOME)/.profile 
+	cd -
+
+vimrc:
+	cd ..
+	ln -s $$(pwd)/.vimrc $(HOME)/.vimrc 
+	cd -
+
 # TODO: rule to install a list of packages
 vim:
 	sudo apt install vim-gnome
