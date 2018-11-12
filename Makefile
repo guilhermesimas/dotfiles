@@ -1,5 +1,10 @@
 # TODO: symbolic link to all the files here
 
+gitconfig:
+	cd ..
+	ln -s $$(pwd)/.gitconfig $(HOME)/.gitconfig 
+	cd -
+
 # TODO: rule to install a list of packages
 vim:
 	sudo apt install vim-gnome
