@@ -1,4 +1,5 @@
-# TODO: symbolic link to all the files here
+# TODO: Treat exististing files. Suggestion: if file exists move to .bkp
+# first
 
 gitconfig:
 	cd $(HOME)
