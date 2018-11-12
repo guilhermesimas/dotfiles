@@ -1,29 +1,31 @@
 # TODO: symbolic link to all the files here
 
 gitconfig:
-	cd ..
+	cd $(HOME)
 	ln -s $$(pwd)/.gitconfig $(HOME)/.gitconfig 
 	cd -
 
 bashrc:
-	cd ..
+	cd $(HOME)
 	ln -s $$(pwd)/.bashrc $(HOME)/.bashrc 
 	cd -
 
 bash_aliases:
-	cd ..
+	cd $(HOME)
 	ln -s $$(pwd)/.bash_aliases $(HOME)/.bash_aliases 
 	cd -
 
 profile:
-	cd ..
+	cd $(HOME)
 	ln -s $$(pwd)/.profile $(HOME)/.profile 
 	cd -
 
 vimrc:
-	cd ..
+	cd $(HOME)
 	ln -s $$(pwd)/.vimrc $(HOME)/.vimrc 
 	cd -
+
+all-dotfiles: gitconfig bashrc bash_aliases profile vimrc
 
 # TODO: rule to install a list of packages
 vim:
@@ -45,4 +47,4 @@ vundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
-.PHONY: vim git build-essentials all-apt
+.PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfiles
