@@ -41,11 +41,14 @@ build-essential:
 htop:
 	sudo apt install htop
 
-all-apt: vim git build-essential htop
+sqlite3:
+	sudo apt install sqlite3
+
+all-apt: vim git build-essential htop sqlite3
 
 # TODO: Test install of vundle before .vimrc
 vundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
-.PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfiles
+.PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfilessqlite3
