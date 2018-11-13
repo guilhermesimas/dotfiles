@@ -1,30 +1,38 @@
-# TODO: Treat exististing files. Suggestion: if file exists move to .bkp
-# first
-
+# TODO: single rule to make all this as prerequisites
 gitconfig:
-	cd $(HOME)
-	ln -s $$(pwd)/.gitconfig $(HOME)/.gitconfig 
-	cd -
+	@if [ -e $(HOME)/.$@ ] ; then \
+		echo "$@ already exists, backing up $@"; \
+		mv $(HOME)/.$@ $(HOME)/.$@.bkp; \
+	fi
+	ln -s $$(pwd)/.$@ $(HOME)/.$@ 
 
 bashrc:
-	cd $(HOME)
-	ln -s $$(pwd)/.bashrc $(HOME)/.bashrc 
-	cd -
+	@if [ -e $(HOME)/.$@ ] ; then \
+		echo "$@ already exists, backing up $@"; \
+		mv $(HOME)/.$@ $(HOME)/.$@.bkp; \
+	fi
+	ln -s $$(pwd)/.$@ $(HOME)/.$@ 
 
 bash_aliases:
-	cd $(HOME)
-	ln -s $$(pwd)/.bash_aliases $(HOME)/.bash_aliases 
-	cd -
+	@if [ -e $(HOME)/.$@ ] ; then \
+		echo "$@ already exists, backing up $@"; \
+		mv $(HOME)/.$@ $(HOME)/.$@.bkp; \
+	fi
+	ln -s $$(pwd)/.$@ $(HOME)/.$@ 
 
 profile:
-	cd $(HOME)
-	ln -s $$(pwd)/.profile $(HOME)/.profile 
-	cd -
+	@if [ -e $(HOME)/.$@ ] ; then \
+		echo "$@ already exists, backing up $@"; \
+		mv $(HOME)/.$@ $(HOME)/.$@.bkp; \
+	fi
+	ln -s $$(pwd)/.$@ $(HOME)/.$@ 
 
 vimrc:
-	cd $(HOME)
-	ln -s $$(pwd)/.vimrc $(HOME)/.vimrc 
-	cd -
+	@if [ -e $(HOME)/.$@ ] ; then \
+		echo "$@ already exists, backing up $@"; \
+		mv $(HOME)/.$@ $(HOME)/.$@.bkp; \
+	fi
+	ln -s $$(pwd)/.$@ $(HOME)/.$@ 
 
 all-dotfiles: gitconfig bashrc bash_aliases profile vimrc
 
