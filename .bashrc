@@ -110,8 +110,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH=$PATH:/home/gabinader/.postools
-alias possh="ssh -oStrictHostKeyChecking=no MAINAPP@127.0.0.1 -p 51000"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -122,11 +120,5 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-
-# virtualenvwrapper
-export WORKON_HOME=$HOME/tensorflow
-source $HOME/.local/bin/virtualenvwrapper.sh 
-
-#LaTeX
 export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
 
