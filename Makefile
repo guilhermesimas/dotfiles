@@ -59,4 +59,8 @@ vundle:
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
-.PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfilessqlite3
+pyenv:
+	git clone https://github.com/pyenv/pyenv.git $(HOME)/.pyenv
+
+
+.PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfilessqlite3 pyenv
