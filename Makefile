@@ -1,4 +1,5 @@
 # TODO: single rule to make all this as prerequisites
+
 gitconfig:
 	@if [ -e $(HOME)/.$@ ] ; then \
 		echo "$@ already exists, backing up $@"; \
@@ -65,5 +66,7 @@ libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 xz-utils tk-dev libffi-dev liblzma-dev
 	git clone https://github.com/pyenv/pyenv.git $(HOME)/.pyenv
 
+pyenv-virtualenv:
+	sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $$(pyenv root)/plugins/pyenv-virtualenv
 
 .PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfilessqlite3 pyenv
