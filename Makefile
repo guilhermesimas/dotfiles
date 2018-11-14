@@ -38,19 +38,19 @@ all-dotfiles: gitconfig bashrc bash_aliases profile vimrc
 
 # TODO: rule to install a list of packages
 vim:
-	sudo apt install vim-gnome
+	sudo apt install -y vim-gnome
 
 git:
-	sudo apt install git
+	sudo apt install -y git
 
 build-essential:
-	sudo apt install build-essential
+	sudo apt install -y build-essential
 
 htop:
-	sudo apt install htop
+	sudo apt install -y htop
 
 sqlite3:
-	sudo apt install sqlite3
+	sudo apt install -y sqlite3
 
 all-apt: vim git build-essential htop sqlite3
 
