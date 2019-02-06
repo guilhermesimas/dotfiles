@@ -18,6 +18,10 @@ Plugin 'tpope/vim-fugitive'
 " vim-airpline plugin. lean & mean status/tyabline for vim that's light as air
 Plugin 'vim-airline/vim-airline'
 
+" surround.vim: quoting/parenthisizing made simple
+Plugin 'tpope/vim-surround'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
