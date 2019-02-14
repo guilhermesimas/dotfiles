@@ -21,6 +21,9 @@ Plugin 'vim-airline/vim-airline'
 " surround.vim: quoting/parenthisizing made simple
 Plugin 'tpope/vim-surround'
 
+" Vastly improved Javascript indentation and syntax support in Vim.
+Plugin 'pangloss/vim-javascript'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
