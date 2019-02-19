@@ -24,6 +24,8 @@ Plugin 'tpope/vim-surround'
 " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'pangloss/vim-javascript'
 
+" Flake8 plugin for Vim
+Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
