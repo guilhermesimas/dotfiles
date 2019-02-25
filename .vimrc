@@ -27,6 +27,12 @@ Plugin 'pangloss/vim-javascript'
 " Flake8 plugin for Vim
 Plugin 'nvie/vim-flake8'
 
+" Vim plugin that displays tags in a window, ordered by scope
+Plugin 'majutsushi/tagbar'
+
+" A code-completion engine for Vim
+Plugin 'valloric/youcompleteme'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -55,4 +61,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+set updatetime=500
 
