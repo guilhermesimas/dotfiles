@@ -64,6 +64,8 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+set clipboard=unnamedplus
+
 set updatetime=500
 
 nnoremap  :YcmCompleter GoTo<CR>
