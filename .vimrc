@@ -13,6 +13,8 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+
+" fugitive.vim: A Git wrapper so awesome, it should be illegal
 Plugin 'tpope/vim-fugitive'
 
 " vim-airpline plugin. lean & mean status/tyabline for vim that's light as air
@@ -64,3 +66,4 @@ set expandtab
 
 set updatetime=500
 
+nnoremap  :YcmCompleter GoTo<CR>
