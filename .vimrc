@@ -23,9 +23,6 @@ Plugin 'vim-airline/vim-airline'
 " surround.vim: quoting/parenthisizing made simple
 Plugin 'tpope/vim-surround'
 
-" Vastly improved Javascript indentation and syntax support in Vim.
-Plugin 'pangloss/vim-javascript'
-
 " Flake8 plugin for Vim
 Plugin 'nvie/vim-flake8'
 
@@ -34,6 +31,18 @@ Plugin 'majutsushi/tagbar'
 
 " A code-completion engine for Vim
 Plugin 'valloric/youcompleteme'
+
+" autopep8 plugin for Vim
+Plugin 'tell-k/vim-autopep8'
+
+" syntax highlighting for Groovy programming language
+Plugin 'vim-scripts/groovy.vim'
+
+" Maintains a history of previous yanks, changes and deletes
+Plugin 'vim-scripts/YankRing.vim'
+
+" enable repeating supported plugin maps with '.'
+Plugin 'tpope/vim-repeat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
