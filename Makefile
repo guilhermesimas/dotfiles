@@ -69,11 +69,17 @@ xz-utils tk-dev libffi-dev liblzma-dev
 pyenv-virtualenv:
 	sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $$(pyenv root)/plugins/pyenv-virtualenv
 
+# TODO: post install script for nvm
 nvm:
 	export NVM_DIR="$(HOME)/.nvm" && ( \
 	git clone https://github.com/creationix/nvm.git "$$NVM_DIR"; \
 	cd "$$NVM_DIR"; \
 	git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $$(git rev-list --tags --max-count=1)`; \
 	) && \. "$$NVM_DIR/nvm.sh"
+
+ycm:
+	env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.6.5
+	pyenv global 3.6.5
+	cd ~/.vim/bundle/youcompleteme; python install.py --clangd-completer --ts-completer
 
 .PHONY: vim git build-essentials all-apt gitconfig bashrc bash_aliases profile vimrc all-dotfilessqlite3 pyenv
