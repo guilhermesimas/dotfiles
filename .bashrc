@@ -133,3 +133,6 @@ eval "$(pyenv virtualenv-init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
+
+# Command to quickly put down some notes
+alias thoughts='vim $HOME/thoughts.md'
