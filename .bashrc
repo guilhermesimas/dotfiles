@@ -134,5 +134,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
 
+# Protobuff
+export PATH="$HOME/protobuf-3.9.0:$PATH"
+
+# Ansible vault
+export ANSIBLE_VAULT_PASSWORD_FILE="$HOME/projects/zoop/.vault_password"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/gsimas/.sdkman"
+[[ -s "/home/gsimas/.sdkman/bin/sdkman-init.sh" ]] && source "/home/gsimas/.sdkman/bin/sdkman-init.sh"
+
 # Command to quickly put down some notes
 alias thoughts='vim $HOME/thoughts.md'

@@ -12,3 +12,5 @@
 	log = log --graph
 [credential]
 	helper = cache
+[diff "ansible-vault"]
+	textconv = ansible-vault view
