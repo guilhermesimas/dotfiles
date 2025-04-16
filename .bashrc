@@ -56,12 +56,38 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[96m\]$(__git_ps1)\[\e[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+parse_git_branch() {
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+parse_aws_vault() {
+  if [ -n "$AWS_VAULT" ]; then
+    echo "($AWS_VAULT)"
+  fi
+}
+
+parse_nvm_version() {
+  local dir="$PWD"
+  # Traverse upward until reaching $HOME or root
+  while [[ "$dir" != "$HOME" && "$dir" != "/" ]]; do
+    if [[ -f "$dir/.nvmrc" ]]; then
+      echo "[$(nvm current)] "
+      return
+    fi
+    dir=$(dirname "$dir")
+  done
+  # Also check if .nvmrc exists in your home directory
+  if [[ -f "$HOME/.nvmrc" ]]; then
+    echo "[$(nvm current)] "
+  fi
+}
+
+ if [ "$color_prompt" = yes ]; then
+  PS1='${debian_chroot:+($debian_chroot)}$(parse_nvm_version)\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;33m\]$(parse_git_branch)\[\033[00m\]\[\033[01;31m\]$(parse_aws_vault)\[\033[00m\]\$ '
+ else
+  PS1='${debian_chroot:+($debian_chroot)}$(parse_nvm_version)\u@\h:\w$(parse_git_branch)\$ '
+ fi
+ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -96,6 +122,15 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -107,32 +142,60 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NeoVim
+export PATH="$PATH:/opt/nvim/"
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+# Tmux auto-start
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
 fi
-
-export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
 
 # PyEnv
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Restart your shell for the changes to take effect.
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
 eval "$(pyenv virtualenv-init -)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[[ -r $NVM_DIR/bash_completion ]] && \. $NVM_DIR/bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm;
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Autoload from .nvmrc
+if command -v nvm &> /dev/null; then
+  nvm_auto() {
+    if [ -f .nvmrc ]; then
+      nvm use --silent 2> /dev/null
+    fi
+  }
+  # Change directory alias
+  cd() {
+    builtin cd "$@"
+    nvm_auto
+  }
+  # Trigger nvm_auto on shell init
+  nvm_auto
+fi
 
-# Command to quickly put down some notes
-alias thoughts='vim $HOME/thoughts.md'
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Aliases
+alias vimdiff='nvim -d'
+
+# Kubectl
+alias k='kubectl'
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+
+# Krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+. "$HOME/.atuin/bin/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
